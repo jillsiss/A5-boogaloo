@@ -11,21 +11,37 @@
 */
 
 window.addEventListener("load", function () {
-
     // 'Fetching Planetary Data' goes below:
-    // fetch().then(function (response) {
-    //     /* This block of code shows how to format the HTML once you fetch some planetary JSON!
-    //     <h2>Mission Destination</h2>
-    //     <ol>
-    //         <li>Name: ${}</li>
-    //         <li>Diameter: ${}</li>
-    //         <li>Star: ${}</li>
-    //         <li>Distance from Earth: ${}</li>
-    //         <li>Number of Moons: ${}</li>
-    //     </ol>
-    //     <img src="${}">
-    //     */
-    // });
+    fetch("https://handlers.education.launchcode.org/static/planets.json").then( function (response) {
+        result = response.json()
+        result.then( function(data) {
+            let i = Math.floor(Math.random()*data.length)
+            console.log(i)
+            document.getElementById("missionTarget").innerHTML = 
+            `
+            <h2>Mission Destination</h2>
+            <ol>
+            <li>Name: ${data[i].name}</li>
+            <li>Diameter: ${data[i].diameter}</li>
+            <li>Star: ${data[i].star}</li>
+            <li>Distance: ${data[i].distance}</li>
+            <li>Number of Moons: ${data[i].moons}</li>
+            <img src="${data[i].image}"/>
+            </ol>
+            `
+        });
+        /* This block of code shows how to format the HTML once you fetch some planetary JSON!
+        <h2>Mission Destination</h2>
+        <ol>
+            <li>Name: ${}</li>
+            <li>Diameter: ${}</li>
+            <li>Star: ${}</li>
+            <li>Distance from Earth: ${}</li>
+            <li>Number of Moons: ${}</li>
+        </ol>
+        <img src="${}">
+        */
+    });
 
 
     // 'Adding Validation' and 'Updating Shuttle Requirements' go below
@@ -34,7 +50,6 @@ window.addEventListener("load", function () {
         let copilotInput = document.querySelector("input[name=copilotName]");
         let fuelInput = document.querySelector("input[name=fuelLevel]");
         let cargoInput = document.querySelector("input[name=cargoMass]");
-        let faultyItemsVis = document.querySelector("div[id=faultyItems")
         form.addEventListener("submit", function(event) {
             document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput.value} Ready`;
             document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotInput.value} Ready`;
