@@ -9,18 +9,18 @@ As you complete the sections of the assignment, I encourage you to check off you
 # Assignment Instructions
 ## Adding Validation
 Ignore the book's instructions for this section. Instead, try to accomplish these goals within `script.js`:
-- [ ] TODO #1: using DOM methods, create a reference to the entire form object and store it in a variable. Add a submission event listener with an `event` parameter in the anonymous function.
-- [ ] TODO #2: create references to the values of the form fields and store them in variables inside of your submission event.
-- [ ] TODO #3: add some validation for the form fields to alert the user if any of the fields are empty. If they are empty, use `event.preventDefault()` to prevent form submission.
+- [x] TODO #1: using DOM methods, create a reference to the entire form object and store it in a variable. Add a submission event listener with an `event` parameter in the anonymous function.
+- [x] TODO #2: create references to the values of the form fields and store them in variables inside of your submission event.
+- [x] TODO #3: add some validation for the form fields to alert the user if any of the fields are empty. If they are empty, use `event.preventDefault()` to prevent form submission.
 
 ## Updating Shuttle Requirements
 Feel free to follow the book's instructions here.
 
 ## Fetching Planetary Data
 Like the Adding Validation section, the book won't be helpful here. Try these instead:
-- [ ] TODO #4: Pass the [JSON Data set](https://handlers.education.launchcode.org/static/planets.json) as an argument into the fetch function. This will make an HTTP GET request to use the data locally. You can refer to the data set using `response`, which is defined in the anonymous function within `.then()`.
-- [ ] TODO #5: Convert `response` into the JSON format using `.json()` and store it in a variable.
-- [ ] TODO #6: Using your new variable, create another promise using the `.then()` function. Inside of that `.then()` function, create another anonymous function with a parameter for your JSON data.
-- [ ] TODO #7: Inside of your anonymous function, use a DOM method to create a reference to the relevant HTML element.
-- [ ] TODO #8: Replace the innerHTML of the element with a template literal. This template literal should contain the commented HTML text in `script.js`, with each `${}` containing the relevant reference to your JSON data set.
-- [ ] BONUS: if you'd like, you can create a variable that stores a randomly generated number from `Math.random()` and use that variable as the index within your JSON array.
+- [x] TODO #4: Pass the [JSON Data set](https://handlers.education.launchcode.org/static/planets.json) as an argument into the fetch function. This will make an HTTP GET request to use the data locally. You can refer to the data set using `response`, which is defined in the anonymous function within `.then()`.
+- [x] TODO #5: Convert `response` into the JSON format using `.json()` and store it in a variable.
+- [x] TODO #6: Using your new variable, create another promise using the `.then()` function. Inside of that `.then()` function, create another anonymous function with a parameter for your JSON data.
+- [x] TODO #7: Inside of your anonymous function, use a DOM method to create a reference to the relevant HTML element.
+- [x] TODO #8: Replace the innerHTML of the element with a template literal. This template literal should contain the commented HTML text in `script.js`, with each `${}` containing the relevant reference to your JSON data set.
+- [x] BONUS: if you'd like, you can create a variable that stores a randomly generated number from `Math.random()` and use that variable as the index within your JSON array.
