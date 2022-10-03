@@ -16,7 +16,6 @@ window.addEventListener("load", function () {
         result = response.json()
         result.then( function(data) {
             let i = Math.floor(Math.random()*data.length)
-            console.log(i)
             document.getElementById("missionTarget").innerHTML = 
             `
             <h2>Mission Destination</h2>
@@ -50,6 +49,7 @@ window.addEventListener("load", function () {
         let copilotInput = document.querySelector("input[name=copilotName]");
         let fuelInput = document.querySelector("input[name=fuelLevel]");
         let cargoInput = document.querySelector("input[name=cargoMass]");
+
         form.addEventListener("submit", function(event) {
             document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput.value} Ready`;
             document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotInput.value} Ready`;
@@ -57,23 +57,29 @@ window.addEventListener("load", function () {
             if (pilotInput.value === "" | copilotInput.value === "" | fuelInput.value === "" | cargoInput.value === "") {
                 alert("All fields are required.");
                 event.preventDefault();
-            } else if(fuelInput.value < 10000) {
+            };
+            
+            if(fuelInput.value < 10000) {
                 document.getElementById("faultyItems").style.visibility = "visible";
                 document.getElementById("fuelStatus").innerHTML = "Not enough fuel to launch";
                 document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
                 document.getElementById("launchStatus").style.color = "red";
                 event.preventDefault();
-            } else if(cargoInput.value > 10000) {
+            };
+            
+            if(cargoInput.value > 10000) {
                 document.getElementById("faultyItems").style.visibility = "visible";
                 document.getElementById("cargoStatus").innerHTML = "Too much mass to launch";
                 document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
                 document.getElementById("launchStatus").style.color = "red";
                 event.preventDefault();
-            } else {
+            };
+            
+            if(cargoInput.value <= 10000 && fuelInput.value >= 10000) {
                 document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
                 document.getElementById("launchStatus").style.color = "green";
                 event.preventDefault();
-            }
+            };
 
        }); 
     // use this link if you need help with validation: https://education.launchcode.org/intro-to-professional-web-dev/chapters/forms/validation-with-javascript.html#javascript-validation
