@@ -57,17 +57,23 @@ window.addEventListener("load", function () {
             if (pilotInput.value === "" | copilotInput.value === "" | fuelInput.value === "" | cargoInput.value === "") {
                 alert("All fields are required.");
                 event.preventDefault();
-            };
-            
-            if(fuelInput.value < 10000) {
+            } else if (!isNaN(pilotInput.value) || !isNaN(copilotInput.value) || isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
+                alert("Make sure to enter valid information for each field!");
+                event.preventDefault();
+            } else if (cargoInput.value <= 10000 && fuelInput.value >= 10000) {
+                document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
+                document.getElementById("launchStatus").style.color = "green";
+                event.preventDefault();
+            } else if (fuelInput.value < 10000) {
                 document.getElementById("faultyItems").style.visibility = "visible";
                 document.getElementById("fuelStatus").innerHTML = "Not enough fuel to launch";
                 document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
                 document.getElementById("launchStatus").style.color = "red";
+                    if (cargoInput.value > 10000) {
+                        document.getElementById("cargoStatus").innerHTML = "Too much mass to launch";
+                    }
                 event.preventDefault();
-            };
-            
-            if(cargoInput.value > 10000) {
+            } else if (cargoInput.value > 10000) {
                 document.getElementById("faultyItems").style.visibility = "visible";
                 document.getElementById("cargoStatus").innerHTML = "Too much mass to launch";
                 document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
@@ -75,11 +81,7 @@ window.addEventListener("load", function () {
                 event.preventDefault();
             };
             
-            if(cargoInput.value <= 10000 && fuelInput.value >= 10000) {
-                document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
-                document.getElementById("launchStatus").style.color = "green";
-                event.preventDefault();
-            };
+
 
        }); 
     // use this link if you need help with validation: https://education.launchcode.org/intro-to-professional-web-dev/chapters/forms/validation-with-javascript.html#javascript-validation
